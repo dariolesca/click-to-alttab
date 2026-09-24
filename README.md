@@ -1,13 +1,15 @@
 # Alt+Tab Click Button (GNOME 50+ Shell Extension)
 
-A lightweight and modern shell extension for **GNOME 50+** that adds an interactive button to the top-right status area. It allows you to cycle through open windows using only your mouse, emulating the native `Alt+Tab` switcher and the Activities Overview.
+A lightweight and modern shell extension for **GNOME 50+** that adds an interactive button to the top-right status area. It allows you to seamlessly manage and switch between open windows using only your mouse.
 
 ## ✨ Features
 
-- **Left-Click:** Cycles forward through all open windows in the current workspace (using Most Recently Used - MRU order).
-- **Auto-Confirm:** Staying idle on the highlighted window for a set amount of time automatically brings it to the foreground, with no need to click anywhere else.
-- **Middle-Click (Scroll Wheel):** Instantly toggles the native **GNOME Overview** for a complete bird's-eye view of your workspaces.
-- **Native Preferences Panel (Libadwaita):** Features an integrated graphical interface to adjust the idle timeout (supporting decimal fractions of a second) and toggle debug logging in the system journal.
+- **Left-Click (Cycle Forward):** Cycles forward through all open windows in the current workspace (using Most Recently Used - MRU order).
+- **Auto-Confirm Timer:** Staying idle on the highlighted window for a set amount of time automatically brings it to the foreground, with no need to click anywhere else.
+- **Right-Click (Window List Menu):** Instantly displays a clean, vertical dropdown menu containing the titles of all open windows for direct selection.
+- **Auto-Close Menu:** The right-click window menu automatically closes as soon as you click anywhere else on the screen or select a window.
+- **Middle-Click (Scroll Wheel):** Instantly toggles the native **GNOME Activities Overview** for a complete bird's-eye view of your workspace.
+- **Native Preferences Panel (Libadwaita):** Features an integrated graphical interface to adjust the idle timeout (supporting decimal fractions of a second), toggle between current or all workspaces, include minimized windows, and toggle debug logging.
 
 ## 🛠️ Manual Installation
 
@@ -31,7 +33,7 @@ gnome-extensions enable click-to-alttab@solinos.it
 
 ## ⚙️ Configuration
 
-You can easily adjust the inactivity timer or toggle logs by opening the built-in preferences dialog via terminal:
+You can easily adjust the inactivity timer or toggle settings by opening the built-in preferences dialog via terminal:
 ```bash
 gnome-extensions prefs click-to-alttab@solinos.it
 ```
