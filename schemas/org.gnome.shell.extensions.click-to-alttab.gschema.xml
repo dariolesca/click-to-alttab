@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.click-to-alttab" path="/org/gnome/shell/extensions/click-to-alttab/">
+    
+    <key name="timeout-seconds" type="d">
+      <default>2.0</default>
+      <summary>Tempo di inattività</summary>
+      <description>Secondi o frazioni di secondo prima di confermare la finestra selezionata.</description>
+    </key>
+
+    <key name="enable-debug" type="b">
+      <default>true</default>
+      <summary>Attiva Debug</summary>
+      <description>Mostra i messaggi di tracciamento dell'estensione all'interno del journalctl.</description>
+    </key>
+
+  </schema>
+</schemalist>
+
