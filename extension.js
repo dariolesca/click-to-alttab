@@ -81,6 +81,7 @@ export default class EnhancedAltTabExtension extends Extension {
 
         if (this._menuManager) {
             this._menuManager.removeMenu(this._menu);
+            this._menuManager.destroy();
             this._menuManager = null;
         }
 
