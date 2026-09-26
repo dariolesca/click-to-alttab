@@ -5,6 +5,7 @@ import St from 'gi://St';
 import Clutter from 'gi://Clutter';
 import GLib from 'gi://GLib';
 import Shell from 'gi://Shell';
+import Gio from 'gi://Gio';
 
 export default class EnhancedAltTabExtension extends Extension {
     enable() {
@@ -164,6 +165,19 @@ export default class EnhancedAltTabExtension extends Extension {
             if (title.length > 40) {
                 title = title.substring(0, 37) + '...';
             }
+
+            let workspaceText = '';
+            if (win.is_on_all_workspaces()) {
+                workspaceText = ' [Tutti]';
+            } else {
+                let ws = win.get_workspace();
+		if (ws && typeof ws.index === 'function') {
+                    workspaceText = ` [WS ${ws.index() + 1}]`;
+                }
+
+            }
+            title = `${title}${workspaceText}`;
+
             if (win.minimized) {
                 title = `[⬇] ${title}`;
             }
@@ -172,7 +186,6 @@ export default class EnhancedAltTabExtension extends Extension {
             let gicon = app ? app.get_icon() : null;
 
             if (!gicon) {
-                const Gio = imports.gi.Gio; 
                 gicon = Gio.Icon.new_for_string('window-new-symbolic');
             }
 
