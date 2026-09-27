@@ -20,7 +20,7 @@ To install this extension manually from source, open your terminal and run the f
 mkdir -p ~/.local/share/gnome-shell/extensions/click-to-alttab@solinos.it
 
 # 2. Clone this repository into the created folder
-git clone https://github.com ~/.local/share/gnome-shell/extensions/click-to-alttab@solinos.it
+git clone https://github.com/dariolesca/click-to-alttab.git ~/.local/share/gnome-shell/extensions/click-to-alttab@solinos.it
 
 # 3. Compile the settings schema (GSettings)
 cd ~/.local/share/gnome-shell/extensions/click-to-alttab@solinos.it
