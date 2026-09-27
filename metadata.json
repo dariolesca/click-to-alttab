@@ -1,5 +1,6 @@
 {
   "uuid": "click-to-alttab@solinos.it",
+  "version": 2,
   "name": "Alt+Tab Click Button",
   "description": "Scorre le finestre aperte con click sinistro e apre l'overview con il tasto centrale.",
   "shell-version": [
