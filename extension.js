@@ -9,6 +9,11 @@ import Gio from 'gi://Gio';
 
 export default class EnhancedAltTabExtension extends Extension {
     enable() {
+        // PROTEZIONE: Se l'indicatore esiste già, non ricreare tutto da capo
+        if (this._indicator) {
+            return;
+        }
+
         this._settings = this.getSettings();
         this._timerId = 0;
         this._windowList = [];
@@ -72,32 +77,41 @@ export default class EnhancedAltTabExtension extends Extension {
         }
     }
 
-    disable() {
-        this._clearTimer();
 
-        if (this._indicator && this._signalId > 0) {
+    disable() {
+        // 1. Pulisci eventuali timer attivi per evitare memory leak
+        if (this._clearTimer) {
+            this._clearTimer();
+        }
+
+        // 2. Scollega il segnale del clic dall'indicatore
+        if (this._indicator && this._signalId !== 0) {
             this._indicator.disconnect(this._signalId);
             this._signalId = 0;
         }
 
-        if (this._menuManager) {
-            this._menuManager.removeMenu(this._menu);
-            this._menuManager.destroy();
-            this._menuManager = null;
-        }
-
-        if (this._menu) {
-            Main.uiGroup.remove_child(this._menu.actor);
-            this._menu.destroy();
-            this._menu = null;
+        // 3. Rimuovi l'indicatore dall'area di stato e dal pannello di GNOME
+        if (Main.panel.statusArea[this.metadata.uuid]) {
+            delete Main.panel.statusArea[this.metadata.uuid];
         }
 
         if (this._indicator) {
             Main.panel._rightBox.remove_child(this._indicator);
-            delete Main.panel.statusArea[this.metadata.uuid];
             this._indicator.destroy();
             this._indicator = null;
         }
+
+        // 4. Distruggi il menu a tendina e il suo manager
+        if (this._menu) {
+            this._menu.destroy();
+            this._menu = null;
+        }
+
+        if (this._menuManager) {
+            this._menuManager = null;
+        }
+
+        // 5. Azzera le variabili di stato rimanenti
         this._windowList = [];
         this._settings = null;
     }

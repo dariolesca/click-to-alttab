@@ -6,6 +6,7 @@
     "50"
   ],
   "settings-schema": "org.gnome.shell.extensions.click-to-alttab",
-  "url": "https://github.com/dariolesca/click-to-alttab.git"
+  "url": "https://github.com/dariolesca/click-to-alttab.git",
+  "session-modes": [ "user", "unlock-dialog" ]
 }
 
